@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+<main class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto my-5">
+                {% if x == 1 %}
+                <span class ='text-success'><h2>{{msg}}</h2></span>
+                 <a href="login"><button class = "btn btn-danger">Login </button></a> 
+                 
+                 {% else %}
+                 
+                 <span class = 'text-danger'><h2>{{msg}}</h2></span>
+                 <a href="register"><button class = "btn btn-danger">Register </button></a> 
+                
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+{% endblock 'main' %}

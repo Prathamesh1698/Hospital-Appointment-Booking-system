@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+<main class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto my-5">
+                <form method = "POST" action="">
+                    {% csrf_token %}
+                    <table>
+                        {% for x in regfmdata  %}
+                            <tr>
+                                <th>{{x.label_tag}}</th>
+                                <td>{{x}}</td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td><button type = 'submit' class= 'btn btn-danger'>Register</button></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+{% endblock 'main' %}

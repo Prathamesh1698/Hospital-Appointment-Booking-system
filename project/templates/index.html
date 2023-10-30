@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+        <div class="container">
+            <div class="row d-md-inline">
+                <div class = "my-10 mb-5 mx-auto ">
+                    
+                    <h3> Want to Make an Appointment ?</h3><h6>Please click <a href="/apt" class="appointment-btn scrollto btn btn-primary"><b>here.</b> </a> </h6>  
+                </div> 
+            </div>
+            
+            <div class="col-md-12 my 5 table table-bordered ">
+                <h2>Below are the booked appointments: </h2>
+                <table class="table">
+                <tr>
+                    <th>Appointment_no</th>
+                    <th>Patient name</th>
+                    <th>Email</th>
+                    <th>Mobile no</th>
+                    <th>Appointment Date</th>
+                    <th>Department</th>
+                    <th>Doctor name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            {% for x in data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{x.Patient_name}}</td>
+                    <td>{{x.Email}}</td>
+                    <td>{{x.Mobile}}</td>
+                    <td>{{x.Date}}</td>
+                    {% if x.Department_name == 1 %}
+                        <td>Neurology</td>
+                        {% elif x.Department_name == 2 %}
+                        <td>Cardiology</td>
+                    {% elif x.Department_name == 3 %}
+                        <td>Eye care</td>
+                    {% else %}
+                        <td>Pediatrics</td>
+                        {% endif %}
+                        
+                        <td>{{x.Doctor_name}}</td>
+                    <td><a href="/edit/{{x.id}}"><button class = "btn btn-warning">Edit</button></a></td>
+                    <td><a href="/delete/{{x.id}}"><button class = "btn btn-danger">Delete</button></a></td>
+                </tr>
+                {% endfor %}
+            </table>
+
+            
+        </div>
+        <div class="col-md-6 mt-5 bordered ">
+            <h3>Filter Bookings By Doctor name</h3>
+            <p><a href="/index">All</a></p>
+            <p><a href="/docfilter/Dhirubhai">Dr.Dhirubhai</a></p>
+            <p><a href="/docfilter/Mukesh">Dr.Mukesh</a></p>
+            <p><a href="/docfilter/Adani">Dr.Adani</a></p>
+            <p><a href="/docfilter/Shah">Dr.Shah</a></p>
+        </div>
+
+        <div class="col-md-6">
+            
+        </div>
+        
+        
+    </div> 
+<hr>
+{% endblock 'main' %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+<main class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto my-5">
+                {% if msg %}
+                    <p><span style = "color:red;">{{msg}}</span></p>
+                {% endif %}
+                <form method = "POST" action="">
+                    {% csrf_token %}
+                    <table>
+                        {{logfmdata}}
+                      
+                        <tr>
+                            <td><button type = 'submit' class= 'btn btn-danger'>Login</button></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+{% endblock 'main' %}

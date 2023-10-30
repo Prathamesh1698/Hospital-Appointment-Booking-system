@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block 'main' %}
+
+<!-- ======= Appointment Section ======= -->
+<section id="appointment" class="appointment section-bg">
+  <div class="container col-md-4 mx-auto">
+    <div class="mb-3 mt-0">
+    </div>
+    {% for x in data  %}
+    <form action="" method="POST" >
+          {% csrf_token %}
+          
+          <div class="row">
+
+            <div class="mb-3">
+              <input type="text" name="name" value = {{x.Patient_name}} class="form-control" id="name" placeholder="Your Name" >
+              <div class="validate"></div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="mt-3 mt-md-0 mb-3">
+              <input type="email" class="form-control" value = {{x.Email}} name="email" id="email" placeholder="Your Email" >
+              <div class="validate"></div>
+            </div>
+          </div>
+
+          <div class="row"> 
+            <div class="mt-3 mt-md-0 mb-3">
+              <input type="number" class="form-control" value = {{x.Mobile}} name="num" id="phone" placeholder="Your Phone" >
+              <div class="validate"></div>
+            </div>
+          </div>  
+
+          <div class="row">
+            <div class="mb-3">
+              <input type="datetime" name="date" value = {{x.Date}} class="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <div class="validate"></div>
+            </div>
+          </div>
+
+          <div class="row"> 
+              <div class="mb-3">
+                <select name="department" id="department" class="form-select">
+                    {% if x.Department_name == 1 %}
+                        <option value="1">Neurology</option>
+                    {% elif x.Department_name == 2 %}
+                        <option value="2">Cardiology</option>
+                    {% elif x.Department_name == 3 %}
+                        <option value="3">Eye care</option>
+                    {% else %}
+                        <option value="4">Pediatrics</option>
+                    {% endif %}
+                        <option value="1">Neurology</option>
+                        <option value="2">Cardiology</option>
+                        <option value="3">Eye care</option>
+                        <option value="4">Pediatrics</option>
+
+                </select>
+                <div class="validate"></div>
+              </div>
+          </div>
+
+          <div class="row">
+            <div class="mb-3">
+              <select name="doctor" id="doctor" class="form-select">
+                {% if x.Doctor_name == Dhirubhai %}
+                    <option value="Dhirubhai">Dr.Dhirubhai</option>
+                {% elif x.Doctor_name == Mukesh %}
+                    <option value="Mukesh">Dr.Mukesh</option>
+                {% elif x.Doctor_name == Adani %}
+                    <option value="Adani">Dr.Adani</option>
+                {% else %}
+                    <option value="Shah">Dr.Shah</option>
+                {% endif %}
+                    <option value="Dhirubhai">Dr.Dhirubhai</option>
+                    <option value="Mukesh">Dr.Mukesh</option>
+                    <option value="Adani">Dr.Adani</option>
+                    <option value="Shah">Dr.Shah</option>
+              </select>
+              <div class="validate"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="mb-3">
+              <div class="text-center ">
+                <a href="index">
+                <button type="submit" class ="bg-warning rounded-pill px-2 py-2">Update</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </form>
+        {% endfor %}
+        
+    </div>
+  </section><!-- End Appointment Section -->
+
+
+{% endblock 'main' %}
